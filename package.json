@@ -1,0 +1,11 @@
+{
+  "name": "alexatelenor",
+  "version": "0.0.1",
+  "description": "Sample Alex Skill Sets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kshitij Bahul",
+  "license": "ISC"
+}
