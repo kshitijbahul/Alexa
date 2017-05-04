@@ -5,12 +5,15 @@ const APP_ID = 'amzn1.ask.skill.d42a1475-25c6-41c5-93a5-9a4b02c6be65';
 const Messages = require('./telenormessages'); 
 
 const handlers = {
-    "LaunchRequest" : () =>{
+    'LaunchRequest' : function(){
         this.emit(':ask',Messages.Welcome_Message);
     },
-    "GetYourMaster" : () =>{
-        console.log(`in GetYourMasterIntent the event is ${JSON.stringify(this)}`)
-        this.emit(':ask',Messages.Master_Message);
+    'GetYourMaster' : function(){
+        console.log(`${Messages.Master_Message} in GetYourMasterIntent the event is ${JSON.stringify(this)}`)
+        this.emit(':tell',Messages.Master_Message);
+    },
+    'CheckAnonymusFunctionIntent': ()=>{
+        console.log(`Need to stringfy this here ${JSON.stringify(this)}`);
     },
     'GetRandomNumber': function () {
         console.log(`In  GetRandomNumber ${JSON.stringify(this)}`);
@@ -47,8 +50,6 @@ const handlers = {
 exports.handler = (event, context) => {
     const alexa = Alexa.handler(event, context);
     alexa.APP_ID = APP_ID;
-    // To enable string internationalization (i18n) features, set a resources object.
-    alexa.resources = languageStrings;
     alexa.registerHandlers(handlers);
     alexa.execute();
 };
