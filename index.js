@@ -31,6 +31,34 @@ const handlers = {
         const speechOutput = `${Messages.RandomNumberText} a ${factIndex}`;
         this.emit(':tell', speechOutput);
     },
+    'CheckCurrentBalanceNonContextualIntent': function(){
+        console.log(`In  CheckCurrentBalanceNonContextualIntent ${JSON.stringify(this)}`);
+        this.emit(':tell',Messages.CurrentBalanceResponseNonContextual)
+    },
+    'CheckCurrentUsageNonContextualIntent': function(){
+        console.log(`In  CheckCurrentUsageNonContextualIntent ${JSON.stringify(this)}`);
+        this.emit(':tell',Messages.CurrentUsageResponseNonContextual)
+    },
+    'CheckCurrentInternetStatusNonContextualIntent': function(){
+        console.log(`In  CheckCurrentInternetStatusNonContextualIntent ${JSON.stringify(this)}`);
+        this.emit(':tell',Messages.CurrentInternetStatusResponseNonContextual)
+    },
+    'InvoiceCallbackNonContextualIntent': function(){
+        console.log(`In  InvoiceCallbackNonContextualIntent ${JSON.stringify(this)}`);
+        this.emit(':tell',Messages.InvoiceCallbackResponseNonContextual)
+    },
+    'CheckCoverageInAreaNonContextualIntent': function(){
+        console.log(`In  CheckCoverageInAreaNonContextualIntent ${JSON.stringify(this)}`);
+        this.emit(':tell',Messages.AreaCoverageResponseNonContextual)
+    },
+    'CheckSubscriptionNonContextualIntent': function(){
+        console.log(`In  CheckSubscriptionNonContextualIntent ${JSON.stringify(this)}`);
+        this.emit(':tell',Messages.MySubscriptionResponseNonContextual)
+    },
+    'CheckOffersNonContextualIntent': function(){
+        console.log(`In  CheckOffersNonContextualIntent ${JSON.stringify(this)}`);
+        this.emit(':tell',Messages.CurrentOffersResponseNonContextual)
+    },
     'AMAZON.HelpIntent': function () {
         console.log(`In  AMAZON.HelpIntent `);
         const speechOutput = this.t('HELP_MESSAGE');
@@ -48,7 +76,7 @@ const handlers = {
     }
 };
 exports.handler = (event, context) => {
-    const alexa = Alexa.handler(event, context);
+    var alexa = Alexa.handler(event, context);
     alexa.APP_ID = APP_ID;
     alexa.registerHandlers(handlers);
     alexa.execute();

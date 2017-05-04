@@ -1,0 +1,45 @@
+{
+  "intents": [
+    {
+      "slots": [
+        {
+          "name": "Region",
+          "type": "LIST_OF_REGIONS"
+        },
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ],
+      "intent": "GetYourMaster"
+    },
+    {
+      "intent": "GetRandomNumber"
+    },
+    {
+      "intent": "CheckAnonymusFunctionIntent"
+    },
+    {
+        "intent" : "CheckCurrentBalanceNonContextualIntent"
+    },
+    {
+        "intent" : "CheckCurrentUsageNonContextualIntent"
+    },
+    {
+        "intent" : "CheckCurrentInternetStatusNonContextualIntent"
+    },
+    {
+        "intent" : "InvoiceCallbackNonContextualIntent"
+    },
+    {
+        "intent" : "CheckCoverageInAreaNonContextualIntent"
+    },
+    {
+        "intent" : "CheckSubscriptionNonContextualIntent"
+    },
+    {
+        "intent" : "CheckOffersNonContextualIntent"
+    }
+
+  ]
+}
