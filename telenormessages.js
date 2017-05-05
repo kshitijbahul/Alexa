@@ -1,6 +1,7 @@
 `use strict`;
 const sayAs = {
-    "telephone": '<say-as interpret-as=\"telephone\">',
+    "telephone": '<say-as interpret-as="telephone">',
+    "date": '<say-as interpret-as="date" format="mdy">',
     "sayasEnd" : '</say-as>',
     "whispered":'<amazon:effect name="whispered">',
     "amazonEffectEnd" :"</amazon:effect>"
@@ -14,6 +15,7 @@ const breaks = {
     "eight" :'<break time="8ms"/> ',
 };
 module.exports = {
+    sayAs,
     Welcome_Message :`I have started up Telenor for you. You can check you Balance, current usage, Internet status. If you want I can also schedule an agent to call you for your invoices`,
     RandomNumberText : `Look what I rolled for you`,
     HELP_MSG :` Can I help you with anything else ?`,
@@ -34,7 +36,7 @@ module.exports = {
     PostponeInvoice :` Invoice with balance 275 kroner is now postponed. New due date is 01 June`,
     BlockSubscription :` Subscription for ${sayAs.telephone}90104005 ${sayAs.sayasEnd} is now temporarily blocked`,
     BroadBandSpeedIncreaseDuration : `How long do you want the BroadBand to be extended for`,
-    IncreaseBroadBandSpeedFor2Months :` Your broadband speed is now increased from 50Mbit/s to 100Mbit/s until 31st July`,
+    IncreaseBroadBandSpeedFor2Months :` Your broadband speed is now increased from 50Mbit/s to 100Mbit/s until `,
     IncreaseDataPackBy2GB :` Your available data for mobile ${sayAs.telephone}90104005 ${sayAs.sayasEnd} is now 3.2 GB`,
     CurrentInternetStatus :` Status updates will be sent to ${sayAs.telephone}90104005 ${sayAs.sayasEnd}`
 }

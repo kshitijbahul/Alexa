@@ -3,7 +3,7 @@
 const Alexa=require('alexa-sdk');
 const APP_ID = 'amzn1.ask.skill.d42a1475-25c6-41c5-93a5-9a4b02c6be65';
 const Messages = require('./telenormessages'); 
-const moment = require('moment');
+var moment = require('moment');
 
 const handlers = {
     'LaunchRequest' : function(){
@@ -47,62 +47,70 @@ const handlers = {
     },
     'CheckCurrentUsageNonContextualIntent': function(){
         console.log(`In  CheckCurrentUsageNonContextualIntent ${JSON.stringify(this)}`);
-        this.emit(':tell',Messages.CurrentUsageResponseNonContextual)
+        this.emit(':ask',Messages.CurrentUsageResponseNonContextual)
     },
     'CheckCurrentInternetStatusNonContextualIntent': function(){
         console.log(`In  CheckCurrentInternetStatusNonContextualIntent ${JSON.stringify(this)}`);
-        this.emit(':tell',Messages.CurrentInternetStatusResponseNonContextual)
+        this.emit(':ask',Messages.CurrentInternetStatusResponseNonContextual)
     },
     'InvoiceCallbackNonContextualIntent': function(){
         console.log(`In  InvoiceCallbackNonContextualIntent ${JSON.stringify(this)}`);
-        this.emit(':tell',Messages.InvoiceCallbackResponseNonContextual)
+        this.emit(':ask',Messages.InvoiceCallbackResponseNonContextual)
     },
     'CheckCoverageInAreaNonContextualIntent': function(){
         console.log(`In  CheckCoverageInAreaNonContextualIntent ${JSON.stringify(this)}`);
-        this.emit(':tell',Messages.AreaCoverageResponseNonContextual)
+        this.emit(':ask',Messages.AreaCoverageResponseNonContextual)
     },
     'CheckSubscriptionNonContextualIntent': function(){
         console.log(`In  CheckSubscriptionNonContextualIntent ${JSON.stringify(this)}`);
-        this.emit(':tell',Messages.MySubscriptionResponseNonContextual)
+        this.emit(':ask',Messages.MySubscriptionResponseNonContextual)
     },
     'CheckOffersNonContextualIntent': function(){
         console.log(`In  CheckOffersNonContextualIntent ${JSON.stringify(this)}`);
-        this.emit(':tell',Messages.CurrentOffersResponseNonContextual)
+        this.emit(':ask',Messages.CurrentOffersResponseNonContextual)
     },
     'TelenorIdIntent': function(){
         console.log(`In  TelenorIdIntent ${JSON.stringify(this)}`);
         const telenorID = this.event && this.event.request && this.event.request.intent && this.event.request.intent.slots && this.event.request.intent.slots.TelenorId && this.event.request.intent.slots.TelenorId.value;
         console.log(`In  TelenorIdIntent ${JSON.stringify(telenorID)} and context is ${this.attributes.context} and ${Messages[this.attributes.context]} message is ${Messages[this.attributes.context].message}`);
+        if(this.attributes.context == 'IncreaseBroadBandSpeedFor2Months'){
+            console.log(`Its IncreaseBroadBandSpeedFor2Months that invoked the telenorIdIntent`);
+            console.log(`Its IncreaseBroadBandSpeedFor2Months Checking moment.js ${moment()} and adding months ${moment().add(this.attributes.numberOfMonths,'M')}`);
+            //var newDate = moment().add(this.attributes.numberOfMonths,'M')
+            console.log(`${Messages[this.attributes.context]} ${Messages.sayAs.date} ${moment().add(this.attributes.numberOfMonths,'M').format('LL')} ${Messages.sayAs.sayasEnd}`);
+            this.emit(':ask',`${Messages[this.attributes.context]} ${moment().add(this.attributes.numberOfMonths,'M').format('LL')} `,Messages.HELP_MSG);
+        }
         //check fo the telenor id here
         /*telenorID ==`123456` ? this.attributes && this.attributes.context ? 
                                 this.emit(':tell',Messages[this.attributes.context].message) : this.emit(':tell',Messages.HELP_MSG)
                              :this.emit(':tell',Messages.TelenorIdNoMatch);*/
-        this.attributes && this.attributes.context ? this.emit(':tell',Messages[this.attributes.context]) : this.emit(':tell',Messages.HELP_MSG);
+        this.attributes && this.attributes.context ? this.emit(':ask',Messages[this.attributes.context],Messages.HELP_MSG) : this.emit(':ask',Messages.HELP_MSG);
     },
     'PostponeInvoiceContextualIntent': function(){
         console.log(`In  PostponeInvoiceContextualIntent ${JSON.stringify(this)}`);
         this.attributes['context'] = 'PostponeInvoice';
-        this.emit(':ask',Messages.RequestTelenorId);
+        this.emit(':ask',Messages.RequestTelenorId,Messages.RequestTelenorId);
     },
     'BlockSubscriptionContextualIntent': function(){
         console.log(`In  BlockSubscriptionContextualIntent ${JSON.stringify(this)}`);
         this.attributes['context'] = 'BlockSubscription';
-        this.emit(':ask',Messages.RequestTelenorId);
+        this.emit(':ask',Messages.RequestTelenorId,Messages.RequestTelenorId);
     },
     'IncreaseBroadBandSpeedContextualIntent': function(){
         console.log(`In  IncreaseBroadBandSpeedContextualIntent ${JSON.stringify(this)}`);
         this.attributes['context'] = 'IncreaseBroadBandSpeedFor2Months';
-        this.emit(':ask',Messages.BroadBandSpeedIncreaseDuration);
+        this.emit(':ask',Messages.BroadBandSpeedIncreaseDuration,Messages.BroadBandSpeedIncreaseDuration);
     },
     'BroadBandSpeedDurationIntent': function(){
         console.log(`In  BroadBandSpeedDurationIntent ${JSON.stringify(this)}`);
         const numberOfMonths = this.event && this.event.request && this.event.request.intent && this.event.request.intent.slots && this.event.request.intent.slots.NumberOfMonths && this.event.request.intent.slots.NumberOfMonths.value;
-        this.emit(':ask',Messages.RequestTelenorId);
+        this.attributes['numberOfMonths'] = numberOfMonths;
+        this.emit(':ask',Messages.RequestTelenorId,Messages.RequestTelenorId);
     },
     'IncreaseDataPackContextualIntent': function(){
         console.log(`In  IncreaseDataPackContextualIntent ${JSON.stringify(this)}`);
         this.attributes['context'] = 'IncreaseDataPackBy2GB';
-        this.emit(':ask',`${Messages.DataPackCost} ${Messages.RequestTelenorId}`);
+        this.emit(':ask',`${Messages.DataPackCost} ${Messages.RequestTelenorId}`,`${Messages.DataPackCost} ${Messages.RequestTelenorId}`);
     },
     'CheckCurrentInternetStatusContextualIntent': function(){
         console.log(`In  CheckCurrentInternetStatusContextualIntent ${JSON.stringify(this)}`);
