@@ -20,6 +20,9 @@
       "intent": "CheckAnonymusFunctionIntent"
     },
     {
+        "intent" : "CheckContextualIntent"
+    },
+    {
         "intent" : "CheckCurrentBalanceNonContextualIntent"
     },
     {
@@ -39,7 +42,42 @@
     },
     {
         "intent" : "CheckOffersNonContextualIntent"
+    },
+    {
+        "intent" : "TelenorIdIntent",
+        "slots":[
+         {
+             "name":"TelenorId",
+             "type":"AMAZON.NUMBER" 
+         }  
+        ]
+    },
+    {
+        "intent" : "PostponeInvoiceContextualIntent"
+    },
+    {
+        "intent" : "BlockSubscriptionContextualIntent"
+    },
+    {
+        "intent" : "IncreaseBroadBandSpeedContextualIntent",
+        "slots" :[
+            {
+                "name": "NumberOfMonths",
+                "type":"AMAZON.NUMBER"
+            }
+        ]
+    },
+    {
+        "intent" : "IncreaseDataPackContextualIntent",
+        "slots" :[
+            {
+                "name": "NumberOfGigs",
+                "type":"AMAZON.NUMBER"
+            }
+        ]   
+    },
+    {
+        "intent" : "CheckCurrentInternetStatusContextualIntent"
     }
-
   ]
 }

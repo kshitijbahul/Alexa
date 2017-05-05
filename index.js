@@ -12,6 +12,15 @@ const handlers = {
         console.log(`${Messages.Master_Message} in GetYourMasterIntent the event is ${JSON.stringify(this)}`)
         this.emit(':tell',Messages.Master_Message);
     },
+    'CheckContextualIntent': function(){
+        console.log(`Here in CheckContextualIntent event is ${JSON.stringify(this)}`);
+        this.emit(':ask',`Okay for What city do you want it`);
+    },
+    'GetCityIntent': function(){
+        console.log(`Here in GetCityIntent event is ${JSON.stringify(this)}`);
+        console.log(`The slots are ${this.event.request.intent.slots}`);
+        this.emit(':tell',Messages.ContextualSuccess);
+    },
     'CheckAnonymusFunctionIntent': ()=>{
         console.log(`Need to stringfy this here ${JSON.stringify(this)}`);
     },
@@ -58,6 +67,43 @@ const handlers = {
     'CheckOffersNonContextualIntent': function(){
         console.log(`In  CheckOffersNonContextualIntent ${JSON.stringify(this)}`);
         this.emit(':tell',Messages.CurrentOffersResponseNonContextual)
+    },
+    'TelenorIdIntent': function(){
+        console.log(`In  TelenorIdIntent ${JSON.stringify(this)}`);
+        const telenorID = this.event && this.event.request && this.event.request.intent && this.event.request.intent.slots && this.event.request.intent.slots.TelenorId;
+        console.log(`In  TelenorIdIntent ${JSON.stringify(telenorID)} and message is ${Messages[this.event.attributes.context].message}`);
+        //check fo the telenor id here
+        this.event.attributes && this.event.attributes.context ? this.emit(':tell',Messages[this.event.attributes.context].message) : this.emit(':tell',Messages.HELP_MSG);
+    },
+    'PostponeInvoiceContextualIntent': function(){
+        console.log(`In  PostponeInvoiceContextualIntent ${JSON.stringify(this)}`);
+        this.event.attributes['context'] = 'PostponeInvoice';
+        this.emit(':ask',Messages.RequestTelenorId);
+    },
+    'BlockSubscriptionContextualIntent': function(){
+        console.log(`In  BlockSubscriptionContextualIntent ${JSON.stringify(this)}`);
+        this.event.attributes['context'] = 'BlockSubscription';
+        this.emit(':ask',Messages.RequestTelenorId);
+    },
+    'IncreaseBroadBandSpeedContextualIntent': function(){
+        console.log(`In  IncreaseBroadBandSpeedContextualIntent ${JSON.stringify(this)}`);
+        this.event.attributes['context'] = 'IncreaseBroadBandSpeedFor2Months';
+        this.emit(':ask',Messages.RequestTelenorId);
+    },
+    'IncreaseDataPackContextualIntent': function(){
+        console.log(`In  IncreaseDataPackContextualIntent ${JSON.stringify(this)}`);
+        this.event.attributes['context'] = 'IncreaseDataPackBy2GB';
+        this.emit(':ask',`${Messages.IncreaseDataPackBy2GB} ${Messages.RequestTelenorId}`);
+    },
+    'CheckCurrentInternetStatusContextualIntent': function(){
+        console.log(`In  CheckCurrentInternetStatusContextualIntent ${JSON.stringify(this)}`);
+        this.event.attributes['context'] = 'CurrentInternetStatus';
+        this.emit(':ask',Messages.CurrentInternetStatusSMSConfirmation);
+    },
+    'AMAZON.YesIntent': function(){
+        console.log(`In  AMAZON.YesIntent ${JSON.stringify(this)}`);
+        console.log(`In  AMAZON.YesIntent ${JSON.stringify(this.event.attributes)} and message is ${Messages[this.event.attributes.context].message}`);
+        this.event.attributes && this.event.attributes.context ? this.emit(':tell',Messages[this.event.attributes.context].message) : this.emit(':tell',Messages.HELP_MSG);
     },
     'AMAZON.HelpIntent': function () {
         console.log(`In  AMAZON.HelpIntent `);

@@ -3,11 +3,18 @@ GetYourMaster who is your master in {Region}
 GetYourMaster who is your master {Date} in {Region}
 GetYourMaster who is your master on {Date} in {Region}
 GetRandomNumber dice me
+CheckContextualIntent Contextual intent
 CheckAnonymusFunctionIntent check a function
 CheckCurrentBalanceNonContextualIntent current balance
 CheckCurrentUsageNonContextualIntent current usage
 CheckCurrentInternetStatusNonContextualIntent problem with internet
-InvoiceCallbackNonContextualIntent call me regarding invoice
+InvoiceCallbackNonContextualIntent call me regarding my invoice
 CheckCoverageInAreaNonContextualIntent coverage area
 CheckSubscriptionNonContextualIntent check subscription
-CheckOffersNonContextualIntent offers
+CheckOffersNonContextualIntent what offers
+TelenorIdIntent {TelenorId}
+PostponeInvoiceContextualIntent postpone my invoice
+BlockSubscriptionContextualIntent block my subscription
+IncreaseBroadBandSpeedContextualIntent increase my broadband speed for the next {NumberOfMonths} months
+IncreaseDataPackContextualIntent Increase my data package by {NumberOfGigs} GB
+CheckCurrentInternetStatusContextualIntent if there is a problem with my internet
