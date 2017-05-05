@@ -13,8 +13,9 @@ CheckCoverageInAreaNonContextualIntent coverage area
 CheckSubscriptionNonContextualIntent check subscription
 CheckOffersNonContextualIntent what offers
 TelenorIdIntent {TelenorId}
-PostponeInvoiceContextualIntent postpone my invoice
-BlockSubscriptionContextualIntent block my subscription
-IncreaseBroadBandSpeedContextualIntent increase my broadband speed for the next {NumberOfMonths} months
-IncreaseDataPackContextualIntent Increase my data package by {NumberOfGigs} GB
+PostponeInvoiceContextualIntent postpone invoice
+BlockSubscriptionContextualIntent block  subscription
+IncreaseBroadBandSpeedContextualIntent increase  broadband speed 
+BroadBandSpeedDurationIntent {NumberOfMonths} months
+IncreaseDataPackContextualIntent Increase  data package by {NumberOfGigs} GB
 CheckCurrentInternetStatusContextualIntent if there is a problem with my internet

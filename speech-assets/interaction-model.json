@@ -59,7 +59,10 @@
         "intent" : "BlockSubscriptionContextualIntent"
     },
     {
-        "intent" : "IncreaseBroadBandSpeedContextualIntent",
+        "intent" : "IncreaseBroadBandSpeedContextualIntent"
+    },
+    {
+        "intent" : "BroadBandSpeedDurationIntent",
         "slots" :[
             {
                 "name": "NumberOfMonths",

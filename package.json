@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "alexa-sdk": "1.0.9",
-    "eslint": "3.19.0"
+    "eslint": "3.19.0",
+    "moment": "2.18.1"
   }
 }
