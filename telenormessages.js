@@ -31,12 +31,13 @@ module.exports = {
     AreaCoverageResponseNonContextual:`Based on your current location, the best available coverage is 4G+. ${breaks.four}  ${sayAs.whispered}Planned availability of 5G in your area is June 2018 ${sayAs.amazonEffectEnd}`,
     CurrentOffersResponseNonContextual:`This month at telenor you can`,
     CurrentInternetStatusSMSConfirmation:`We have a registered fault in your area. ${breaks.three} Estimated correction time is today at 14:45.  Would you like to receive status updates via SMS?`,
-    DataPackCost:`2GB data costs 99 kroner ${breaks.three}`,
+    DataPackCost:`data costs 99 kroner ${breaks.three}`,
     RequestTelenorId :`Please confirm using your registered 6-digit Telenor ID`,
     PostponeInvoice :` Invoice with balance 275 kroner is now postponed. New due date is 01 June`,
     BlockSubscription :` Subscription for ${sayAs.telephone}90104005 ${sayAs.sayasEnd} is now temporarily blocked`,
     BroadBandSpeedIncreaseDuration : `How long do you want the BroadBand to be extended for`,
+    DataPackIncreaseByMessage : `How may GBs of data do you need`,
     IncreaseBroadBandSpeedFor2Months :` Your broadband speed is now increased from 50Mbit/s to 100Mbit/s until `,
-    IncreaseDataPackBy2GB :` Your available data for mobile ${sayAs.telephone}90104005 ${sayAs.sayasEnd} is now 3.2 GB`,
+    IncreaseDataPackBy2GB :` Your available data for mobile ${sayAs.telephone}90104005 ${sayAs.sayasEnd} is now`,
     CurrentInternetStatus :` Status updates will be sent to ${sayAs.telephone}90104005 ${sayAs.sayasEnd}`
 }

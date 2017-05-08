@@ -71,13 +71,16 @@
         ]
     },
     {
-        "intent" : "IncreaseDataPackContextualIntent",
+        "intent" : "IncreaseDataPackContextualIntent"
+    },
+    {
+        "intent" : "NumberOfGigsIntent",
         "slots" :[
             {
-                "name": "NumberOfGigs",
-                "type":"AMAZON.NUMBER"
+                "name" : "NumberOfGigs",
+                "type" : "AMAZON.NUMBER"
             }
-        ]   
+        ]
     },
     {
         "intent" : "CheckCurrentInternetStatusContextualIntent"

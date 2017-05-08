@@ -79,6 +79,10 @@ const handlers = {
             //var newDate = moment().add(this.attributes.numberOfMonths,'M')
             console.log(`${Messages[this.attributes.context]} ${Messages.sayAs.date} ${moment().add(this.attributes.numberOfMonths,'M').format('LL')} ${Messages.sayAs.sayasEnd}`);
             this.emit(':ask',`${Messages[this.attributes.context]} ${moment().add(this.attributes.numberOfMonths,'M').format('LL')} `,Messages.HELP_MSG);
+        } else if(this.attributes.context == 'IncreaseDataPackBy2GB'){
+            console.log(`Its IncreaseDataPackBy2GB that invoked the telenorIdIntent`);
+            console.log(`${Messages[this.attributes.context]} ${Messages.sayAs.date} ${moment().add(this.attributes.numberOfMonths,'M').format('LL')} ${Messages.sayAs.sayasEnd}`);
+            this.emit(':ask',`${Messages[this.attributes.context]} ${parseInt(this.attributes['numberOfGigs'])+1.2}GB`,Messages.HELP_MSG);
         }
         //check fo the telenor id here
         /*telenorID ==`123456` ? this.attributes && this.attributes.context ? 
@@ -110,7 +114,13 @@ const handlers = {
     'IncreaseDataPackContextualIntent': function(){
         console.log(`In  IncreaseDataPackContextualIntent ${JSON.stringify(this)}`);
         this.attributes['context'] = 'IncreaseDataPackBy2GB';
-        this.emit(':ask',`${Messages.DataPackCost} ${Messages.RequestTelenorId}`,`${Messages.DataPackCost} ${Messages.RequestTelenorId}`);
+        this.emit(":ask",`${Messages.DataPackIncreaseByMessage}`,`${Messages.DataPackIncreaseByMessage}`);
+        //
+    },
+    'NumberOfGigsIntent': function(){
+        this.attributes['numberOfGigs'] = this.event && this.event.request && this.event.request.intent && this.event.request.intent.slots && this.event.request.intent.slots.NumberOfMonths && this.event.request.intent.slots.NumberOfMonths.value;;
+        console.log(`In  NumberOfGigsIntent ${JSON.stringify(this)} and Gigs are ${this.attributes['numberOfGigs']}`);
+        this.emit(':ask',`${this.attributes['numberOfGigs']}GB ${Messages.DataPackCost} ${Messages.RequestTelenorId}`,`${Messages.DataPackCost} ${Messages.RequestTelenorId}`);
     },
     'CheckCurrentInternetStatusContextualIntent': function(){
         console.log(`In  CheckCurrentInternetStatusContextualIntent ${JSON.stringify(this)}`);
@@ -143,4 +153,8 @@ exports.handler = (event, context) => {
     alexa.APP_ID = APP_ID;
     alexa.registerHandlers(handlers);
     alexa.execute();
+    //TODO
+    // Multiple States
+    // Multiple registerHandlers
+    // Display Cards
 };

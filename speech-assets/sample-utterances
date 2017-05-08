@@ -17,5 +17,7 @@ PostponeInvoiceContextualIntent postpone invoice
 BlockSubscriptionContextualIntent block  subscription
 IncreaseBroadBandSpeedContextualIntent increase  broadband speed 
 BroadBandSpeedDurationIntent {NumberOfMonths} months
-IncreaseDataPackContextualIntent Increase  data package by {NumberOfGigs} GB
+IncreaseDataPackContextualIntent Increase  data package 
+NumberOfGigsIntent {NumberOfGigs} GB
+NumberOfGigsIntent {NumberOfGigs} Gigabytes
 CheckCurrentInternetStatusContextualIntent if there is a problem with my internet
