@@ -47,27 +47,27 @@ const handlers = {
     },
     'CheckCurrentUsageNonContextualIntent': function(){
         console.log(`In  CheckCurrentUsageNonContextualIntent ${JSON.stringify(this)}`);
-        this.emit(':ask',Messages.CurrentUsageResponseNonContextual)
+        this.emit(':ask',Messages.CurrentUsageResponseNonContextual,Messages.HELP_MSG)
     },
     'CheckCurrentInternetStatusNonContextualIntent': function(){
         console.log(`In  CheckCurrentInternetStatusNonContextualIntent ${JSON.stringify(this)}`);
-        this.emit(':ask',Messages.CurrentInternetStatusResponseNonContextual)
+        this.emit(':ask',Messages.CurrentInternetStatusResponseNonContextual,Messages.HELP_MSG)
     },
     'InvoiceCallbackNonContextualIntent': function(){
         console.log(`In  InvoiceCallbackNonContextualIntent ${JSON.stringify(this)}`);
-        this.emit(':ask',Messages.InvoiceCallbackResponseNonContextual)
+        this.emit(':ask',Messages.InvoiceCallbackResponseNonContextual,Messages.HELP_MSG)
     },
     'CheckCoverageInAreaNonContextualIntent': function(){
         console.log(`In  CheckCoverageInAreaNonContextualIntent ${JSON.stringify(this)}`);
-        this.emit(':ask',Messages.AreaCoverageResponseNonContextual)
+        this.emit(':ask',Messages.AreaCoverageResponseNonContextual,Messages.HELP_MSG)
     },
     'CheckSubscriptionNonContextualIntent': function(){
         console.log(`In  CheckSubscriptionNonContextualIntent ${JSON.stringify(this)}`);
-        this.emit(':ask',Messages.MySubscriptionResponseNonContextual)
+        this.emit(':ask',Messages.MySubscriptionResponseNonContextual,Messages.HELP_MSG)
     },
     'CheckOffersNonContextualIntent': function(){
         console.log(`In  CheckOffersNonContextualIntent ${JSON.stringify(this)}`);
-        this.emit(':ask',Messages.CurrentOffersResponseNonContextual)
+        this.emit(':ask',Messages.CurrentOffersResponseNonContextual,Messages.HELP_MSG)
     },
     'TelenorIdIntent': function(){
         console.log(`In  TelenorIdIntent ${JSON.stringify(this)}`);
@@ -118,7 +118,7 @@ const handlers = {
         //
     },
     'NumberOfGigsIntent': function(){
-        this.attributes['numberOfGigs'] = this.event && this.event.request && this.event.request.intent && this.event.request.intent.slots && this.event.request.intent.slots.NumberOfMonths && this.event.request.intent.slots.NumberOfMonths.value;;
+        this.attributes['numberOfGigs'] = this.event && this.event.request && this.event.request.intent && this.event.request.intent.slots && this.event.request.intent.slots.NumberOfGigs && this.event.request.intent.slots.NumberOfGigs.value;;
         console.log(`In  NumberOfGigsIntent ${JSON.stringify(this)} and Gigs are ${this.attributes['numberOfGigs']}`);
         this.emit(':ask',`${this.attributes['numberOfGigs']}GB ${Messages.DataPackCost} ${Messages.RequestTelenorId}`,`${Messages.DataPackCost} ${Messages.RequestTelenorId}`);
     },
@@ -130,7 +130,7 @@ const handlers = {
     'AMAZON.YesIntent': function(){
         console.log(`In  AMAZON.YesIntent ${JSON.stringify(this)}`);
         console.log(`In  AMAZON.YesIntent ${JSON.stringify(this.attributes)} and message is ${Messages[this.attributes.context].message}`);
-        this.attributes && this.attributes.context ? this.emit(':tell',Messages[this.attributes.context]) : this.emit(':tell',Messages.HELP_MSG);
+        this.attributes && this.attributes.context ? this.emit(':tell',Messages[this.attributes.context],Messages.HELP_MSG) : this.emit(':tell',Messages.HELP_MSG);
     },
     'AMAZON.HelpIntent': function () {
         console.log(`In  AMAZON.HelpIntent `);
@@ -139,9 +139,14 @@ const handlers = {
         this.emit(':ask', speechOutput, reprompt);
     },
     'AMAZON.CancelIntent': function () {
+        console.log('Came in here in CancelIntent')
         this.emit(':tell', Messages.STOP_MESSAGE);
     },
+    'AMAZON.NoIntent' : function(){
+        console.log('Came in here in No Intent')
+    },
     'AMAZON.StopIntent': function () {
+        console.log('Came in here in StopIntent')
         this.emit(':tell', Messages.STOP_MESSAGE);
     },
     'SessionEndedRequest': function () {

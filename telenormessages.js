@@ -16,7 +16,7 @@ const breaks = {
 };
 module.exports = {
     sayAs,
-    Welcome_Message :`I have started up Telenor for you. You can check you Balance, current usage, Internet status. If you want I can also schedule an agent to call you for your invoices`,
+    Welcome_Message :`Welcome to Telenor. I can help you with your Balance, current usage, Internet status. If you want I can also schedule an agent to call you for your invoices`,
     RandomNumberText : `Look what I rolled for you`,
     HELP_MSG :` Can I help you with anything else ?`,
     STOP_MSG : `Bye`,
