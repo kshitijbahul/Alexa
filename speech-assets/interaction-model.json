@@ -86,10 +86,25 @@
         "intent" : "CheckCurrentInternetStatusContextualIntent"
     },
     {
+        "intent" : "ContactMeIntent"
+    },
+    {
+        "intent" : "SkillInformation"
+    },
+    {
         "intent" : "AMAZON.HelpIntent"
     },
     {
         "intent" : "AMAZON.StopIntent"
+    },
+    {
+        "intent" : "AMAZON.CancelIntent"
+    },
+    {
+        "intent" : "AMAZON.NoIntent"
+    },
+    {
+      "intent": "AMAZON.YesIntent"
     }
   ]
 }

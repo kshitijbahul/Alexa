@@ -1,14 +1,9 @@
-GetYourMaster who is your master
-GetYourMaster who is your master in {Region}
-GetYourMaster who is your master {Date} in {Region}
-GetYourMaster who is your master on {Date} in {Region}
-GetRandomNumber dice me
-CheckContextualIntent Contextual intent
-CheckAnonymusFunctionIntent check a function
 CheckCurrentBalanceNonContextualIntent current balance
+CheckCurrentBalanceNonContextualIntent balance
 CheckCurrentUsageNonContextualIntent current usage
+CheckCurrentUsageNonContextualIntent data usage
 CheckCurrentInternetStatusNonContextualIntent problem with internet
-InvoiceCallbackNonContextualIntent call me regarding my invoice
+InvoiceCallbackNonContextualIntent call regarding invoice
 CheckCoverageInAreaNonContextualIntent coverage area
 CheckSubscriptionNonContextualIntent check subscription
 CheckOffersNonContextualIntent what offers
@@ -21,3 +16,14 @@ IncreaseDataPackContextualIntent Increase  data package
 NumberOfGigsIntent {NumberOfGigs} GB
 NumberOfGigsIntent {NumberOfGigs} Gigabytes
 CheckCurrentInternetStatusContextualIntent if there is a problem with my internet
+AMAZON.CancelIntent Nothing
+AMAZON.CancelIntent Nowhere
+AMAZON.YesIntent Yes
+AMAZON.YesIntent Sure
+AMAZON.YesIntent Alright
+AMAZON.HelpIntent Help
+AMAZON.HelpIntent what can you do for me 
+ContactMeIntent Call
+ContactMeIntent CallBack
+ContactMeIntent Contact
+SkillInformation Skill
