@@ -1,26 +1,7 @@
 {
   "intents": [
     {
-      "slots": [
-        {
-          "name": "Region",
-          "type": "LIST_OF_REGIONS"
-        },
-        {
-          "name": "Date",
-          "type": "AMAZON.DATE"
-        }
-      ],
-      "intent": "GetYourMaster"
-    },
-    {
-      "intent": "GetRandomNumber"
-    },
-    {
-      "intent": "CheckAnonymusFunctionIntent"
-    },
-    {
-        "intent" : "CheckContextualIntent"
+        "intent" : "WelcomeMessageIntent"
     },
     {
         "intent" : "CheckCurrentBalanceNonContextualIntent"

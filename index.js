@@ -10,47 +10,21 @@ const handlers = {
     'LaunchRequest' : function(){
         this.attributes['context'] = 'LaunchRequest';
         this.attributes['welcomeMessage'] = true;
-        this.emit(`CheckCurrentInternetStatusContextualIntent`);
+        this.emit(`WelcomeMessageIntent`);
     },
-    'GetYourMaster' : function(){
-        console.log(`${Messages.Master_Message} in GetYourMasterIntent the event is ${JSON.stringify(this)}`)
-        this.emit(':ask',`${Messages.Master_Message} ${Messages.HELP_MSG_PAUSED}`);
-    },
-    'CheckContextualIntent': function(){
-        console.log(`Here in CheckContextualIntent event is ${JSON.stringify(this)}`);
-        this.emit(':ask',`Okay for What city do you want it`);
-    },
-    'GetCityIntent': function(){
-        console.log(`Here in GetCityIntent event is ${JSON.stringify(this)}`);
-        console.log(`The slots are ${this.event.request.intent.slots}`);
-        this.emit(':ask',Messages.ContextualSuccess);
-    },
-    'CheckAnonymusFunctionIntent': ()=>{
-        console.log(`Need to stringfy this here ${JSON.stringify(this)}`);
-    },
-    'GetRandomNumber': function () {
-        console.log(`In  GetRandomNumber ${JSON.stringify(this)}`);
-        this.emit('GetFact');
-    },
-    'GetFact': function () {
-        // Get a random space fact from the space facts list
-        // Use this.t() to get corresponding language data
-        //const factArr = this.t('FACTS');
-        console.log(`In  GetFact ${JSON.stringify(this)}`);
-        const factIndex = Math.floor(Math.random()*100);
-        //const randomFact = factArr[factIndex];
-
-        // Create speech output
-        const speechOutput = `${Messages.RandomNumberText} a ${factIndex}`;
-        this.emit(':tell', speechOutput);
+    'WelcomeMessageIntent' : function(){
+        console.log(`Here in WelcomeMessage Intent ${JSON.stringify(this)}`);
+        this.emit(':askWithCard',`${Messages.Salutation} ${envVariables.CurrentUser} ${Messages.breaks.twoHundred} ${Messages.WelcomeMessage} ${Messages.breaks.fiveHundred} ${Messages.WarmWelcomeSatus} ${Messages.breaks.eightHundred}${Messages.CompressedMessage}`,`${Messages.CompressedMessage}`)
     },
     'CheckCurrentBalanceNonContextualIntent': function(){
         console.log(`In  CheckCurrentBalanceNonContextualIntent ${JSON.stringify(this)}`);
+        //this.attributes['expectsNo'] = true;
         this.attributes['context'] = 'CheckCurrentBalanceNonContextualIntent';
-        this.emit(':ask',`${Messages.CurrentBalanceResponseNonContextual} `,Messages.HELP_MSG)
+        this.emit(':ask',`${Messages.CurrentBalanceResponseNonContextual} ${Messages.HELP_MSG_PAUSED}`,Messages.HELP_MSG)
     },
     'CheckCurrentUsageNonContextualIntent': function(){
         console.log(`In  CheckCurrentUsageNonContextualIntent ${JSON.stringify(this)}`);
+        this.attributes['expectsNo'] = true;
         this.attributes.context ='CheckCurrentUsageNonContextualIntent';
         this.emit(':ask',`${Messages.CurrentUsageResponseNonContextual} `,Messages.HELP_MSG)
     },
@@ -68,7 +42,9 @@ const handlers = {
     },
     'CheckSubscriptionNonContextualIntent': function(){
         console.log(`In  CheckSubscriptionNonContextualIntent ${JSON.stringify(this)}`);
-        this.emit(':ask',`${Messages.MySubscriptionResponseNonContextual} ${Messages.HELP_MSG_PAUSED}`,Messages.HELP_MSG)
+        this.attributes['expectsNo'] = true;
+        this.attributes.context ='CheckSubscriptionNonContextualIntent';
+        this.emit(':ask',`${Messages.MySubscriptionResponseNonContextual} `,Messages.HELP_MSG)
     },
     'CheckOffersNonContextualIntent': function(){
         console.log(`In  CheckOffersNonContextualIntent ${JSON.stringify(this)}`);
@@ -129,10 +105,12 @@ const handlers = {
         this.emit(':ask',`${this.attributes['numberOfGigs']}GB ${Messages.DataPackCost} ${Messages.RequestTelenorId}`,`${Messages.DataPackCost} ${Messages.RequestTelenorId}`);
     },
     'CheckCurrentInternetStatusContextualIntent': function(){
-        var welcomeMessage = this.attributes.context == 'LaunchRequest' ? `${Messages.Salutation} ${envVariables.CurrentUser} ${Messages.breaks.twoHundred} `:'';
+        //var welcomeMessage = this.attributes.context == 'LaunchRequest' ? `${Messages.Salutation} ${envVariables.CurrentUser} ${Messages.breaks.twoHundred} `:'';
         console.log(`In  CheckCurrentInternetStatusContextualIntent ${JSON.stringify(this)}`);
+        this.attributes['expectsNo'] = true;
         this.attributes['context'] = 'CurrentInternetStatus';
-        this.emit(':ask',`${welcomeMessage} ${Messages.CurrentInternetStatusSMSConfirmation}`,`${Messages.CurrentInternetStatusSMSConfirmation}`);
+        //this.emit(':ask',`${welcomeMessage} ${Messages.CurrentInternetStatusSMSConfirmation}`,`${Messages.CurrentInternetStatusSMSConfirmation}`);
+        this.emit(':ask',`${Messages.CurrentInternetStatusSMSConfirmation}`,`${Messages.HELP_MSG}`);
     },
     'ContactMeIntent': function () {
         console.log(`In  ContactMeIntent ${JSON.stringify(this)}`);
@@ -146,34 +124,45 @@ const handlers = {
         console.log(`In  AMAZON.YesIntent ${JSON.stringify(this)}`);
         console.log(`In  AMAZON.YesIntent ${JSON.stringify(this.attributes)} and message is ${Messages[this.attributes.context]}`);
         console.log(Messages[`${this.attributes.context}YesIntent`]);
-        var message = this.attributes.context && this.attributes.context == 'CurrentInternetStatus' && this.attributes.welcomeMessage 
-                        ? `${Messages[this.attributes.context+"YesIntent"]} ${Messages.breaks['1s']}${Messages.CompressedMessage}` : '';
+        /*var message = this.attributes.context && this.attributes.context == 'CurrentInternetStatus' && this.attributes.welcomeMessage 
+                        ? `${Messages[this.attributes.context+"YesIntent"]} ${Messages.breaks['1s']}${Messages.CompressedMessage}` : '';*/ //temp comment
         this.attributes.welcomeMessage ? this.attributes.welcomeMessage= false: '';
-        this.attributes.context == 'CurrentInternetStatus' && message ? this.emit(':ask',message) : '' ;
-        this.attributes.context=='CheckCurrentBalanceNonContextualIntent' ? this.emit('CheckCurrentUsageNonContextualIntent') : '' ;
-        this.attributes.context=='CheckCurrentUsageNonContextualIntent' ? this.emit('IncreaseDataPackContextualIntent') : '' ;
-        console.log(`In  AMAZON.YesIntent after !! ${JSON.stringify(this)}`);
+        this.attributes.expectsNo ? this.attributes.expectsNo= false: '';
+        //this.attributes.context == 'CurrentInternetStatus' && message ? this.emit(':ask',message) : '' ;//temp comment
+        //this.attributes.context=='CheckCurrentBalanceNonContextualIntent' ? this.emit('CheckCurrentUsageNonContextualIntent') : '' ;
+        this.attributes.context=='CheckCurrentUsageNonContextualIntent' ?  ( this.attributes.context = null|| this.emit('IncreaseDataPackContextualIntent')) : '' ;
+        this.attributes.context=='CheckSubscriptionNonContextualIntent' ? ( this.attributes.context = null|| this.emit('IncreaseDataPackContextualIntent')) : '' ;
+        console.log(`In  AMAZON.YesIntent after now going to utter !! ${JSON.stringify(this)}`);
         //this.attributes && this.attributes.context ? this.emit(':tell',Messages[this.attributes.context],Messages.HELP_MSG) : this.emit(':tell',`I don't know what you aare saying yes to. ${Messages.HELP_MSG}`);
          this.emit(':ask',this.attributes && this.attributes.context ? `${Messages[this.attributes.context+"YesIntent"]} ${Messages.HELP_MSG_PAUSED}`: `I don't know what you are saying yes to. ${Messages.CompressedMessage}`,Messages.HELP_MSG);
     },
     'AMAZON.HelpIntent': function () {
         console.log(`In  AMAZON.HelpIntent ${JSON.stringify(this)}`);
-        this.emit(':ask', Messages.HELP_MESSAGE);
+        this.emit(':ask', `${Messages.CompleteHelpMessage}`);
     },
     'AMAZON.CancelIntent': function () {
         console.log('Came in here in CancelIntent')
-        this.emit(':tell', Messages.STOP_MESSAGE);
+        this.emit('AMAZON.StopIntent');
     },
     'AMAZON.NoIntent' : function(){
         console.log(`Came in here in No Intent ${JSON.stringify(this)}`);
         console.log('The nointent message is ',Messages[this.attributes.context+'NoIntent']);
         var message = '';
         var promptMessage = '';
-        if (this.attributes.NoContext){
-            this.attributes.NoContext = false;
+        if (this.attributes.expectsNo) {
+            console.log(`In Here No Intent the Context expects No ${JSON.stringify(this)}`)
+            this.attributes.expectsNo = false;
+            this.attributes.NoContext = true;
+            this.emit(':ask',Messages.HELP_MSG,Messages.HELP_MSG);
+        }else {
+            console.log(`In Here No Intent the ELSE PART OF Context expects No ${JSON.stringify(this)}`)
             this.emit('AMAZON.StopIntent')  ;
         }
-        this.attributes.context=='CheckCurrentUsageNonContextualIntent' ? this.emit('CheckOffersNonContextualIntent') : '' ;
+        /*if (this.attributes.NoContext){
+            this.attributes.NoContext = false;
+            this.emit('AMAZON.StopIntent')  ;
+        }*/
+        //this.attributes.context=='CheckCurrentUsageNonContextualIntent' ? this.emit('CheckOffersNonContextualIntent') : '' ;
         if(this.attributes.context && this.attributes.context == 'CurrentInternetStatus' && this.attributes.welcomeMessage){
             console.log(`Entered if in No contetnt i.e we are still in welcome flow  ${Messages[this.attributes.context+'NoIntent']} ${Messages.CompressedMessage}`);
             message = `${Messages[this.attributes.context+'NoIntent']} ${Messages.breaks.twoHundred} ${Messages.CompressedMessage}`;
@@ -193,11 +182,11 @@ const handlers = {
     },
     'AMAZON.StopIntent': function () {
         console.log(`Came in here in StopIntent ${JSON.stringify(this)}`)
-        this.emit(':tell', Messages.STOP_MSG);
+        this.emit(':tell', `${Messages.STOP_MSG}`);
     },
     'SessionEndedRequest': function () {
-        console.log('Came in here in SessionEndedRequest')
-        this.emit(':tell', Messages.STOP_MESSAGE);
+        console.log('Came in here in SessionEndedRequest calling AMAZON.StopIntent')
+        this.emit('AMAZON.StopIntent');
     }
 };
 exports.handler = (event, context) => {

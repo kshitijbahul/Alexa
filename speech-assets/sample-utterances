@@ -2,14 +2,19 @@ CheckCurrentBalanceNonContextualIntent current balance
 CheckCurrentBalanceNonContextualIntent balance
 CheckCurrentUsageNonContextualIntent current usage
 CheckCurrentUsageNonContextualIntent data usage
+CheckCurrentUsageNonContextualIntent current consumption
+CheckCurrentUsageNonContextualIntent data consumption
 CheckCurrentInternetStatusNonContextualIntent problem with internet
 InvoiceCallbackNonContextualIntent call regarding invoice
+InvoiceCallbackNonContextualIntent Customer Service call regarding invoice
 CheckCoverageInAreaNonContextualIntent coverage area
 CheckSubscriptionNonContextualIntent check subscription
+CheckSubscriptionNonContextualIntent about subscription
 CheckOffersNonContextualIntent what offers
 TelenorIdIntent {TelenorId}
 PostponeInvoiceContextualIntent postpone invoice
-BlockSubscriptionContextualIntent block  subscription
+BlockSubscriptionContextualIntent block subscription
+BlockSubscriptionContextualIntent block my subscription
 IncreaseBroadBandSpeedContextualIntent increase  broadband speed 
 BroadBandSpeedDurationIntent {NumberOfMonths} months
 IncreaseDataPackContextualIntent Increase  data package 
@@ -26,4 +31,4 @@ AMAZON.HelpIntent what can you do for me
 ContactMeIntent Call
 ContactMeIntent CallBack
 ContactMeIntent Contact
-SkillInformation Skill
+SkillInformation built this Skill
