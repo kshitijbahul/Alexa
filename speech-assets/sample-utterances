@@ -9,6 +9,7 @@ CheckCurrentUsageNonContextualIntent data consumption
 CheckCurrentInternetStatusNonContextualIntent problem with internet
 
 InvoiceCallbackNonContextualIntent call regarding invoice
+InvoiceCallbackNonContextualIntent contact regarding invoice
 InvoiceCallbackNonContextualIntent Customer Service call regarding invoice
 
 CheckCoverageInAreaNonContextualIntent coverage area
@@ -21,6 +22,11 @@ CheckOffersNonContextualIntent what offers
 TelenorIdIntent {TelenorId}
 
 PostponeInvoiceContextualIntent postpone invoice
+PostponeInvoiceContextualIntent delay invoice
+PostponeInvoiceContextualIntent hold invoice
+PostponeInvoiceContextualIntent postpone invoice this month
+PostponeInvoiceContextualIntent delay invoice this month
+PostponeInvoiceContextualIntent hold invoice this month
 
 BlockSubscriptionContextualIntent block subscription
 BlockSubscriptionContextualIntent block my subscription
@@ -57,5 +63,5 @@ ContactMeIntent Contact
 
 SkillInformation built this Skill
 SkillInformation developed this Skill
-SkillInformation developed by
-SkillInformation developed
+SkillInformation skill developed 
+SkillInformation developed skill
