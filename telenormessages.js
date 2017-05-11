@@ -68,6 +68,10 @@ module.exports = {
     CurrentInternetStatusNoIntent :``,
     ContactUserMessage :` I have placed the request and you will be shortly contacted by our customer service team.`,
     SkillInformation : `This skill has been Built by Miles India`,
+    AboutTelenor : `Telenor Group  is a Norwegian multinational telecommunications company headquartered at Fornebu in Bærum, close to Oslo. 
+                    ${breaks.fifty}It is one of the world's largest mobile telecommunications companies with operations in Scandinavia, Eastern Europe and Asia. 
+                    ${breaks.fifty}It has extensive broadband and TV distribution operations in four Nordic countries, and a 10-year-old research and business line for Machine-to-Machine technology. 
+                    ${breaks.fifty}Telenor owns networks in 13 countries, and has operations in 29 countries.`,
     CompleteHelpMessage:`I can help you ${breaks.fifty} Check your current balance, 
                                         ${breaks.fifty} your current Internet Usage,  
                                         ${breaks.fifty} Postpone your invoice or ask Telenor to call you regarding it,        

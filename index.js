@@ -120,6 +120,10 @@ const handlers = {
         console.log(`In  SkillInformation ${JSON.stringify(this)}`);
         this.emit(':ask', `${Messages.SkillInformation} ${Messages.HELP_MSG_PAUSED}`,Messages.HELP_MSG);
     },
+    'AboutTelenorIntent': function () {
+        console.log(`In  SkillInformation ${JSON.stringify(this)}`);
+        this.emit(':ask', `${Messages.AboutTelenor} ${Messages.HELP_MSG_PAUSED}`,Messages.HELP_MSG);
+    },
     'AMAZON.YesIntent': function(){
         console.log(`In  AMAZON.YesIntent ${JSON.stringify(this)}`);
         console.log(`In  AMAZON.YesIntent ${JSON.stringify(this.attributes)} and message is ${Messages[this.attributes.context]}`);

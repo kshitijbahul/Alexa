@@ -85,7 +85,10 @@
         "intent" : "AMAZON.NoIntent"
     },
     {
-      "intent": "AMAZON.YesIntent"
+        "intent": "AMAZON.YesIntent"
+    },
+    {
+        "intent": "AboutTelenorIntent"
     }
   ]
 }

@@ -44,7 +44,12 @@ AMAZON.YesIntent Sure
 AMAZON.YesIntent Alright
 
 AMAZON.HelpIntent Help
-AMAZON.HelpIntent what can you do for me 
+AMAZON.HelpIntent what can you
+AMAZON.HelpIntent how can you help
+AMAZON.HelpIntent what all can you do
+
+AboutTelenorIntent About Telenor
+AboutTelenorIntent What is Telenor
 
 ContactMeIntent Call
 ContactMeIntent CallBack
