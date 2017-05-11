@@ -39,7 +39,7 @@ module.exports = {
     NoTelenorIdMentioned : `You did not mention a TelenorId, Could you mention the TelenorId again please ?`,
     InvalidTelenorId: `is not your TelenorId, do you want to try again ?`,
     WelcomeMessage :`Welcome to Telenor. ${breaks.twoHundred}`,
-    CompressedMessage : `Here's what I can do for you.${breaks.fifty} I can help you to check your balance , get your current internet usage and much more.${breaks.hundred} What would you like to do ?`,
+    CompressedMessage : `Here's what I can do for you.${breaks.fifty} I can help you check your balance , get your current internet usage and much more.${breaks.hundred} What would you like to do ?`,
     Welcome_Message :`Welcome to Telenor. I can help you with your Balance, current usage, Internet status. If you want I can also schedule an agent to call you for your invoices`,
     RandomNumberText : `Look what I rolled for you`,
     HELP_MSG_PAUSED : `${breaks.hundred}Can I help you with anything else ?`,
