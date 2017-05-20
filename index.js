@@ -26,7 +26,8 @@ const handlers = {
         console.log(`In  CheckCurrentUsageNonContextualIntent ${JSON.stringify(this)}`);
         this.attributes['expectsNo'] = true;
         this.attributes.context ='CheckCurrentUsageNonContextualIntent';
-        this.emit(':ask',`${Messages.CurrentUsageResponseNonContextual} `,Messages.HELP_MSG)
+        var numberOfGigs = this.attributes['numberOfGigs'] ? this.attributes['numberOfGigs'] : '2';
+        this.emit(':ask',`${Messages.CurrentUsageResponseNonContextualFirstPart} ${numberOfGigs} ${Messages.CurrentUsageResponseNonContextualSecondPart}`,Messages.HELP_MSG)
     },
     'CheckCurrentInternetStatusNonContextualIntent': function(){
         console.log(`In  CheckCurrentInternetStatusNonContextualIntent ${JSON.stringify(this)}`);
@@ -49,7 +50,8 @@ const handlers = {
     'CheckOffersNonContextualIntent': function(){
         console.log(`In  CheckOffersNonContextualIntent ${JSON.stringify(this)}`);
         this.attributes.context ='CheckOffersNonContextualIntent';
-        this.emit(':ask',`${Messages.CurrentOffersResponseNonContextual} ${Messages.HELP_MSG_PAUSED}`,Messages.HELP_MSG)
+        this.attributes['expectsNo'] = true;
+        this.emit(':ask',`${Messages.CurrentOffersResponseNonContextual} `,Messages.HELP_MSG)
     },
     'TelenorIdIntent': function(){
         console.log(`In  TelenorIdIntent ${JSON.stringify(this)}`);
@@ -68,8 +70,11 @@ const handlers = {
         } else if(this.attributes && this.attributes.context && this.attributes.context == 'IncreaseDataPackBy2GB'){
             console.log(`Its IncreaseDataPackBy2GB that invoked the telenorIdIntent`);
             console.log(`${Messages[this.attributes.context]} ${Messages.sayAs.date} ${moment().add(this.attributes.numberOfMonths,'M').format('LL')} ${Messages.sayAs.sayasEnd}`);
-            this.emit(':ask',`${Messages[this.attributes.context]} ${parseInt(this.attributes['numberOfGigs'])+1.2}GB ${Messages.HELP_MSG_PAUSED}`,Messages.HELP_MSG);
+            this.emit(':ask',`${Messages[this.attributes.context]} ${parseInt(this.attributes['numberOfGigs'])-1.2}GB ${Messages.HELP_MSG_PAUSED}`,Messages.HELP_MSG);
+        } else if (this.attributes && this.attributes.context && this.attributes.context == 'PostponeInvoice'){
+            this.emit(':ask',`${Messages[this.attributes.context]} ${moment().add(1,'M').format('LL')} ${Messages.HELP_MSG_PAUSED}`,Messages.HELP_MSG);
         }
+        
         this.attributes && this.attributes.context ? this.emit(':ask',`${Messages[this.attributes.context]} ${Messages.HELP_MSG_PAUSED}`,Messages.HELP_MSG) : this.emit(':ask',Messages.HELP_MSG);
     },
     'PostponeInvoiceContextualIntent': function(){
@@ -100,9 +105,14 @@ const handlers = {
         //
     },
     'NumberOfGigsIntent': function(){
-        this.attributes['numberOfGigs'] = this.event && this.event.request && this.event.request.intent && this.event.request.intent.slots && this.event.request.intent.slots.NumberOfGigs && this.event.request.intent.slots.NumberOfGigs.value;;
-        console.log(`In  NumberOfGigsIntent ${JSON.stringify(this)} and Gigs are ${this.attributes['numberOfGigs']}`);
-        this.emit(':ask',`${this.attributes['numberOfGigs']}GB ${Messages.DataPackCost} ${Messages.RequestTelenorId}`,`${Messages.DataPackCost} ${Messages.RequestTelenorId}`);
+        // PUT THE  no of intended gigs here
+        this.attributes['orignalGigs'] = this.attributes['orignalGigs'] ? this.attributes['orignalGigs'] : 2; 
+        //this.attributes['orignalGigs'] = 2;
+        var gigsRequested = this.event && this.event.request && this.event.request.intent && this.event.request.intent.slots && this.event.request.intent.slots.NumberOfGigs && this.event.request.intent.slots.NumberOfGigs.value;
+        //this.attributes['numberOfGigs'] = this.event && this.event.request && this.event.request.intent && this.event.request.intent.slots && this.event.request.intent.slots.NumberOfGigs && this.event.request.intent.slots.NumberOfGigs.value;;
+        this.attributes['numberOfGigs'] = (this.attributes['numberOfGigs'] ? parseInt(this.attributes['numberOfGigs']) : 0 )+parseInt(gigsRequested) + (this.attributes['numberOfGigs']? 0 :parseInt(this.attributes['orignalGigs']));
+        console.log(`In  NumberOfGigsIntent ${JSON.stringify(this)} and Gigs are ${gigsRequested} and total gigs now ${this.attributes['numberOfGigs']}`);
+        this.emit(':ask',`${gigsRequested}GB ${Messages.DataPackCost} ${Messages.RequestTelenorId}`,`${Messages.DataPackCost} ${Messages.RequestTelenorId}`);
     },
     'CheckCurrentInternetStatusContextualIntent': function(){
         //var welcomeMessage = this.attributes.context == 'LaunchRequest' ? `${Messages.Salutation} ${envVariables.CurrentUser} ${Messages.breaks.twoHundred} `:'';
@@ -136,9 +146,11 @@ const handlers = {
         //this.attributes.context=='CheckCurrentBalanceNonContextualIntent' ? this.emit('CheckCurrentUsageNonContextualIntent') : '' ;
         this.attributes.context=='CheckCurrentUsageNonContextualIntent' ?  ( this.attributes.context = null|| this.emit('IncreaseDataPackContextualIntent')) : '' ;
         this.attributes.context=='CheckSubscriptionNonContextualIntent' ? ( this.attributes.context = null|| this.emit('IncreaseDataPackContextualIntent')) : '' ;
+        this.attributes.context=='CheckOffersNonContextualIntent' ? ( this.attributes.context = null|| this.emit('IncreaseDataPackContextualIntent')) : '' ;
+        this.attributes.context=='CurrentInternetStatus' ? ( this.attributes.context = null|| `${Messages.CurrentInternetStatusYesIntent} ${Messages.HELP_MSG_PAUSED}`) : '' ;
         console.log(`In  AMAZON.YesIntent after now going to utter !! ${JSON.stringify(this)}`);
         //this.attributes && this.attributes.context ? this.emit(':tell',Messages[this.attributes.context],Messages.HELP_MSG) : this.emit(':tell',`I don't know what you aare saying yes to. ${Messages.HELP_MSG}`);
-         this.emit(':ask',this.attributes && this.attributes.context ? `${Messages[this.attributes.context+"YesIntent"]} ${Messages.HELP_MSG_PAUSED}`: `I don't know what you are saying yes to. ${Messages.CompressedMessage}`,Messages.HELP_MSG);
+        this.emit(':ask', `I don't know what you are saying yes to. ${Messages.CompressedMessage}`,Messages.HELP_MSG);
     },
     'AMAZON.HelpIntent': function () {
         console.log(`In  AMAZON.HelpIntent ${JSON.stringify(this)}`);

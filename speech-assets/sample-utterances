@@ -32,6 +32,7 @@ BlockSubscriptionContextualIntent block subscription
 BlockSubscriptionContextualIntent block my subscription
 
 IncreaseBroadBandSpeedContextualIntent increase  broadband speed 
+IncreaseBroadBandSpeedContextualIntent increase  internet speed 
 
 BroadBandSpeedDurationIntent {NumberOfMonths} months
 
