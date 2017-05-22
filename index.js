@@ -147,7 +147,7 @@ const handlers = {
         this.attributes.context=='CheckCurrentUsageNonContextualIntent' ?  ( this.attributes.context = null|| this.emit('IncreaseDataPackContextualIntent')) : '' ;
         this.attributes.context=='CheckSubscriptionNonContextualIntent' ? ( this.attributes.context = null|| this.emit('IncreaseDataPackContextualIntent')) : '' ;
         this.attributes.context=='CheckOffersNonContextualIntent' ? ( this.attributes.context = null|| this.emit('IncreaseDataPackContextualIntent')) : '' ;
-        this.attributes.context=='CurrentInternetStatus' ? ( this.attributes.context = null|| this.emit(`${Messages.CurrentInternetStatusYesIntent} ${Messages.HELP_MSG_PAUSED}`)) : '' ;
+        this.attributes.context=='CurrentInternetStatus' ? ( this.attributes.context = null|| this.emit(':ask',`${Messages.CurrentInternetStatusYesIntent} ${Messages.HELP_MSG_PAUSED}`,Messages.HELP_MSG)) : '' ;
         console.log(`In  AMAZON.YesIntent after now going to utter !! ${JSON.stringify(this)}`);
         //this.attributes && this.attributes.context ? this.emit(':tell',Messages[this.attributes.context],Messages.HELP_MSG) : this.emit(':tell',`I don't know what you aare saying yes to. ${Messages.HELP_MSG}`);
         this.emit(':ask', `I don't know what you are saying yes to. ${Messages.CompressedMessage}`,Messages.HELP_MSG);
