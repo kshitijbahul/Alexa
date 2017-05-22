@@ -80,12 +80,12 @@ const handlers = {
     'PostponeInvoiceContextualIntent': function(){
         console.log(`In  PostponeInvoiceContextualIntent ${JSON.stringify(this)}`);
         this.attributes['context'] = 'PostponeInvoice';
-        this.emit(':ask',`${Messages.RequestTelenorId}`,Messages.RequestTelenorId);
+        this.emit(':ask',`${Messages.RequestTelenorIdForDelayInvoice}`,Messages.RequestTelenorId);
     },
     'BlockSubscriptionContextualIntent': function(){
         console.log(`In  BlockSubscriptionContextualIntent ${JSON.stringify(this)}`);
         this.attributes['context'] = 'BlockSubscription';
-        this.emit(':ask',`${Messages.RequestTelenorId}`,Messages.RequestTelenorId);
+        this.emit(':ask',`${Messages.RequestTelenorIdForBlockSubscription}`,Messages.RequestTelenorId);
     },
     'IncreaseBroadBandSpeedContextualIntent': function(){
         console.log(`In  IncreaseBroadBandSpeedContextualIntent ${JSON.stringify(this)}`);
