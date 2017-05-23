@@ -38,7 +38,7 @@ module.exports = {
     WarmWelcomeSatus : `There are no registered faults in your area`,
     NoTelenorIdMentioned : `You did not mention a TelenorID, Could you mention the TelenorID again please ?`,
     InvalidTelenorId: `is not your TelenorID, Please mention your 6 digit TelenorID ?`,
-    WelcomeMessage :`Welcome to Telenor. ${breaks.twoHundred}`,
+    WelcomeMessage :`Welcome to 'teːlə'nuːr. ${breaks.twoHundred}`,
     CompressedMessage : `Here's what I can do for you.${breaks.fifty} I can help you check your balance , get your current internet usage and much more.${breaks.hundred} What would you like to do ?`,
     Welcome_Message :`Welcome to Telenor. I can help you with your Balance, current usage, Internet status. If you want I can also schedule an agent to call you for your invoices`,
     RandomNumberText : `Look what I rolled for you`,
@@ -55,7 +55,7 @@ module.exports = {
     InvoiceCallbackResponseNonContextual:`Our estimated waiting time is 4 minutes. ${breaks.three} Your callback is placed in our queue and you will be contacted by our invoice department shortly`,
     MySubscriptionResponseNonContextual:`You currently are subscribed as ${sayAs.telephone}901-040-05 ${sayAs.sayasEnd} on a Freedom 2GB plan.${breaks.four}  Based on your current data usage, we recommend upgrading to Freedom 5GB. Do you want to increase your data pack ?`,
     AreaCoverageResponseNonContextual:`Based on your current location, the best available coverage is 4G+. ${breaks.four}  Planned availability of 5G in your area is June 2018 `,
-    CurrentOffersResponseNonContextual:`This month at telenor you can Upgrade to 3GB for 299 kroner per month, 15 GB for 499 kroner per Month. Would you want to increase your Data pack`,
+    CurrentOffersResponseNonContextual:`This month at 'teːlə'nuːr you can Upgrade to 3GB for 299 kroner per month, 15 GB for 499 kroner per Month. Would you want to increase your Data pack`,
     CurrentInternetStatusSMSConfirmation:`We have a registered fault in your area. ${breaks.three} Estimated correction time is today at 14:45.  Would you like to receive status updates via SMS?`,
     DataPackCost:`data costs 99 kroner ${breaks.three}`,
     RequestTelenorId :`Please confirm using your registered 6-digit TelenorID`,
@@ -72,16 +72,16 @@ module.exports = {
     CurrentInternetStatusNoIntent :``,
     ContactUserMessage :` I have placed the request and you will be shortly contacted by our customer service team.`,
     SkillInformation : `This skill has been Built by Miles India`,
-    AboutTelenor : `Telenor Group  is a Norwegian multinational telecommunications company headquartered at Fornebu in Bærum, close to Oslo. 
+    AboutTelenor : `'teːlə'nuːr Group  is a Norwegian multinational telecommunications company headquartered at Fornebu in Bærum, close to Oslo. 
                     ${breaks.fifty}It is one of the world's largest mobile telecommunications companies with operations in Scandinavia, Eastern Europe and Asia. 
                     ${breaks.fifty}It has extensive broadband and TV distribution operations in four Nordic countries, and a 10-year-old research and business line for Machine-to-Machine technology. 
-                    ${breaks.fifty}Telenor owns networks in 13 countries, and has operations in 29 countries.`,
+                    ${breaks.fifty}'teːlə'nuːr owns networks in 13 countries, and has operations in 29 countries.`,
     CompleteHelpMessage:`I can help you ${breaks.fifty} Check your current balance, 
                                         ${breaks.fifty} your current Internet Usage,  
-                                        ${breaks.fifty} Postpone your invoice or ask Telenor to call you regarding it,        
+                                        ${breaks.fifty} Postpone your invoice or ask 'teːlə'nuːr to call you regarding it,        
                                         ${breaks.fifty} Check your subscription, 
                                         ${breaks.fifty} Check network coverage in your area,         
                                         ${breaks.fifty} Increase your broadband speed ,
                                         ${breaks.fifty} Increase your Data Pack ,
-                                        ${breaks.fifty} ask telenor to contact you , ${breaks.hundred} What would you like to do ? `
+                                        ${breaks.fifty} ask 'teːlə'nuːr to contact you , ${breaks.hundred} What would you like to do ? `
 }
