@@ -9,12 +9,16 @@ CheckCurrentUsageNonContextualIntent data consumption
 CheckCurrentInternetStatusNonContextualIntent problem with internet
 
 InvoiceCallbackNonContextualIntent call regarding invoice
+InvoiceCallbackNonContextualIntent call for invoice
 InvoiceCallbackNonContextualIntent contact regarding invoice
+InvoiceCallbackNonContextualIntent contact for invoice
 InvoiceCallbackNonContextualIntent Customer Service call regarding invoice
 
 CheckCoverageInAreaNonContextualIntent coverage area
 
 CheckSubscriptionNonContextualIntent check subscription
+CheckSubscriptionNonContextualIntent subscription info
+CheckSubscriptionNonContextualIntent get account details
 CheckSubscriptionNonContextualIntent about subscription
 
 CheckOffersNonContextualIntent what offers
@@ -31,17 +35,31 @@ PostponeInvoiceContextualIntent hold invoice this month
 BlockSubscriptionContextualIntent block subscription
 BlockSubscriptionContextualIntent block my subscription
 
-IncreaseBroadBandSpeedContextualIntent increase  broadband speed 
-IncreaseBroadBandSpeedContextualIntent increase  internet speed 
+IncreaseBroadBandSpeedContextualIntent increase  broadband speed
 
 BroadBandSpeedDurationIntent {NumberOfMonths} months
 
-IncreaseDataPackContextualIntent Increase  data package 
+IncreaseDataPackContextualIntent Increase  data package
+IncreaseDataPackContextualIntent Increase  data pack
 
 NumberOfGigsIntent {NumberOfGigs} GB
 NumberOfGigsIntent {NumberOfGigs} Gigabytes
 
 CheckCurrentInternetStatusContextualIntent if there is a problem with my internet
+
+ContactMeIntent Call
+ContactMeIntent CallBack
+ContactMeIntent Contact
+
+SkillInformation built this Skill
+SkillInformation developed this Skill
+SkillInformation developed by
+SkillInformation developed
+
+AMAZON.HelpIntent Help
+AMAZON.HelpIntent what can you
+AMAZON.HelpIntent how can you help
+AMAZON.HelpIntent what all can you do
 
 AMAZON.CancelIntent Nothing
 AMAZON.CancelIntent Nowhere
@@ -50,19 +68,5 @@ AMAZON.YesIntent Yes
 AMAZON.YesIntent Sure
 AMAZON.YesIntent Alright
 
-AMAZON.HelpIntent Help
-AMAZON.HelpIntent what can you
-AMAZON.HelpIntent how can you help
-AMAZON.HelpIntent what all can you do
-
 AboutTelenorIntent About Telenor
 AboutTelenorIntent What is Telenor
-
-ContactMeIntent Call
-ContactMeIntent CallBack
-ContactMeIntent Contact
-
-SkillInformation built this Skill
-SkillInformation developed this Skill
-SkillInformation skill developed 
-SkillInformation developed skill
